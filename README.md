@@ -1,9 +1,3 @@
-## Install packages
-
-```bash
-npm install
-```
-
 ## How to build (via Docker)
 
 This project based on the [create-react-app](https://github.com/facebook/create-react-app), to build using docker-compose:
@@ -12,10 +6,8 @@ This project based on the [create-react-app](https://github.com/facebook/create-
   docker-compose run frontend npm run build
 ```
 
-## How to run dev (via Docker)
+## Run locally on Mac
 
 ```bash
-  docker-compose up
+  npm run start:mac
 ```
-
-Local URL: [http://localhost:19006](http://localhost:19006)
