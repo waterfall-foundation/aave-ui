@@ -3,6 +3,7 @@
 tests/.env
 node_modules/
 package.temp.json
+package-lock.json-e
 .expo/*
 npm-debug.*
 *.jks

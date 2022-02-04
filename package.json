@@ -116,6 +116,7 @@
   },
   "scripts": {
     "start": "npm i && sed -i 's/git+ssh/git+https/g' package-lock.json && react-app-rewired start",
+    "start:mac": "npm i && sed -i -e 's/git+ssh/git+https/g' package-lock.json && react-app-rewired start",
     "start:dev": "react-app-rewired start",
     "start:prod": "serve -s build",
     "build": "react-app-rewired build",
