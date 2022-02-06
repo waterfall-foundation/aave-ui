@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { ChainId } from '@aave/contract-helpers';
+// import { ChainId } from '@aave/contract-helpers';
 import { getProvider } from '../../helpers/config/markets-and-network-config';
+import { waterfallId } from '../../ui-config/networks';
 
-const mainnetProvider = getProvider(ChainId.mainnet);
+const mainnetProvider = getProvider(waterfallId);
 
 const useGetEnsName = (address: string) => {
   const [ensName, setEnsName] = useState<string | null>(null);
