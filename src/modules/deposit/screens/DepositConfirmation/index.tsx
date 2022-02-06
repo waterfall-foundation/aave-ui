@@ -16,7 +16,7 @@ import Value from '../../../../components/basic/Value';
 import PoolTxConfirmationView from '../../../../components/PoolTxConfirmationView';
 import HealthFactor from '../../../../components/HealthFactor';
 import DepositCurrencyWrapper from '../../components/DepositCurrencyWrapper';
-import { getAssetInfo } from '../../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset } from '../../../../helpers/config/assets-config';
 
 import defaultMessages from '../../../../defaultMessages';
 import messages from './messages';
@@ -38,7 +38,7 @@ function DepositConfirmation({
     symbol: currencySymbol,
     decimals: poolReserve.decimals,
   });
-  const assetDetails = getAssetInfo(poolReserve.symbol);
+  const assetDetails = prepareAsset(getAssetInfo(poolReserve.symbol));
 
   if (!amount) {
     return null;

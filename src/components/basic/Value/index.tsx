@@ -7,7 +7,7 @@ import { useThemeContext } from '@aave/aave-ui-kit';
 import { CompactNumber } from '../CompactNumber';
 import SubValue from './SubValue';
 import ValueWithSmallDecimals from './ValueWithSmallDecimals';
-import { getAssetInfo, TokenIcon } from '../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset, TokenIcon } from '../../../helpers/config/assets-config';
 
 import staticStyles from './style';
 
@@ -57,7 +57,7 @@ export default function Value({
   const { currentTheme, xl } = useThemeContext();
   const intl = useIntl();
 
-  const asset = symbol && getAssetInfo(symbol);
+  const asset = symbol && prepareAsset(getAssetInfo(symbol));
   const [newValue, setNewValue]: any = useState(value);
   const [newSubValue, setNewSubValue]: any = useState(subValue);
   const updateValue = updateCondition ? undefined : value;

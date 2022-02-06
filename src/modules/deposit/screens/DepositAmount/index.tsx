@@ -25,7 +25,7 @@ import messages from './messages';
 
 import linkIcon from '../../../../images/whiteLinkIcon.svg';
 import { isFeatureEnabled } from '../../../../helpers/config/markets-and-network-config';
-import { getAssetInfo } from '../../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset } from '../../../../helpers/config/assets-config';
 
 interface DepositAmountProps
   extends Pick<
@@ -47,7 +47,7 @@ function DepositAmount({
   const { payments, isPaymentNashNotOnMainMarket } = usePayments();
   const { sm } = useThemeContext();
 
-  const asset = getAssetInfo(currencySymbol);
+  const asset = prepareAsset(getAssetInfo(currencySymbol));
 
   let maxAmountToDeposit = valueToBigNumber(walletBalance);
   if (maxAmountToDeposit.gt(0) && poolReserve.symbol.toUpperCase() === networkConfig.baseAsset) {

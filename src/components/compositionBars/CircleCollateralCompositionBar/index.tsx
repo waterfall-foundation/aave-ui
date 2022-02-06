@@ -4,7 +4,7 @@ import { valueToBigNumber } from '@aave/protocol-js';
 
 import { useDynamicPoolDataContext } from '../../../libs/pool-data-provider';
 import CircleCompositionBar from '../CircleCompositionBar';
-import { getAssetInfo, getAssetColor } from '../../../helpers/config/assets-config';
+import { getAssetInfo, getAssetColor, prepareAsset } from '../../../helpers/config/assets-config';
 
 import messages from './messages';
 
@@ -29,7 +29,9 @@ export default function CircleCollateralCompositionBar() {
       );
     })
     .map((userReserve) => ({
-      label: `${getAssetInfo(userReserve.reserve.symbol).formattedName}  ${intl.formatNumber(
+      label: `${
+        prepareAsset(getAssetInfo(userReserve.reserve.symbol)).formattedName
+      }  ${intl.formatNumber(
         valueToBigNumber(userReserve.underlyingBalanceMarketReferenceCurrency)
           .dividedBy(totalCollateralMarketReferenceCurrency)
           .multipliedBy(100)

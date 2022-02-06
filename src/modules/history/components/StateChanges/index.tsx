@@ -5,7 +5,7 @@ import { useThemeContext } from '@aave/aave-ui-kit';
 
 import TailArrow from '../../../../components/basic/TailArrow';
 import { HistoryItemTypes } from '../../types';
-import { getAssetInfo, TokenIcon } from '../../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset, TokenIcon } from '../../../../helpers/config/assets-config';
 
 import messages from './messages';
 import staticStyles from './style';
@@ -26,7 +26,7 @@ export default function StateChanges({
 }: StateChangesProps) {
   const intl = useIntl();
   const { currentTheme, isCurrentThemeDark } = useThemeContext();
-  const asset = symbol && getAssetInfo(symbol);
+  const asset = symbol && prepareAsset(getAssetInfo(symbol));
 
   return (
     <div

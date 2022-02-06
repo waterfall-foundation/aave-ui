@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { useThemeContext } from '@aave/aave-ui-kit';
 
 import staticStyles from './style';
-import { getAssetInfo } from '../../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset } from '../../../../helpers/config/assets-config';
 
 interface SubValueProps {
   symbol?: string;
@@ -24,7 +24,7 @@ export default function SubValue({
   const intl = useIntl();
   const { currentTheme } = useThemeContext();
 
-  const asset = symbol && getAssetInfo(symbol);
+  const asset = symbol && prepareAsset(getAssetInfo(symbol));
 
   return (
     <p className={classNames('SubValue', `SubValue__${color}`)}>

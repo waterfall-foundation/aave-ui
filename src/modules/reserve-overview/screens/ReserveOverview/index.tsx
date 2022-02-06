@@ -23,7 +23,7 @@ import messages from './messages';
 import staticStyles from './style';
 
 import linkIcon from '../../../../images/blueLinkIcon.svg';
-import { getAssetInfo } from '../../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset } from '../../../../helpers/config/assets-config';
 import { useReserveRatesHistory } from '../../../../libs/pool-data-provider/hooks/use-reserve-rates-history';
 
 function Charts({ poolReserve }: { poolReserve: ValidationWrapperComponentProps['poolReserve'] }) {
@@ -57,7 +57,7 @@ function ReserveOverview({
   const intl = useIntl();
   const { currentTheme, sm } = useThemeContext();
   const { marketRefPriceInUsd } = useStaticPoolDataContext();
-  const asset = getAssetInfo(currencySymbol);
+  const asset = prepareAsset(getAssetInfo(currencySymbol));
 
   const poolLink = getLPTokenPoolLink({
     symbol: currencySymbol,

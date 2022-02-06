@@ -10,7 +10,7 @@ import Value from '../../../../components/basic/Value';
 import BorrowContent from './BorrowContent';
 import StateChangesContent from './StateChangesContent';
 import LiquidationContent from './LiquidationContent';
-import { getAssetInfo, TokenIcon } from '../../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset, TokenIcon } from '../../../../helpers/config/assets-config';
 import { HistoryItemTypes } from '../../types';
 
 import messages from './messages';
@@ -113,7 +113,8 @@ export default function HistoryModal({
               <div className="HistoryModal__asset-line">
                 <TokenIcon tokenSymbol={data.symbol} height={20} width={20} />
                 <span>
-                  {getAssetInfo(data.symbol).formattedSymbol || getAssetInfo(data.symbol).symbol}
+                  {prepareAsset(getAssetInfo(data.symbol)).formattedSymbol ||
+                    getAssetInfo(data.symbol).symbol}
                 </span>
               </div>
             </Row>

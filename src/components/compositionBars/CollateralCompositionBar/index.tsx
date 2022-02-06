@@ -6,7 +6,7 @@ import { valueToBigNumber, BigNumber } from '@aave/protocol-js';
 import { useDynamicPoolDataContext } from '../../../libs/pool-data-provider';
 import Row from '../../basic/Row';
 import CompositionBar from '../CompositionBar';
-import { getAssetInfo, getAssetColor } from '../../../helpers/config/assets-config';
+import { getAssetInfo, getAssetColor, prepareAsset } from '../../../helpers/config/assets-config';
 
 import messages from './messages';
 import staticStyles from './style';
@@ -39,7 +39,7 @@ export default function CollateralCompositionBar({
       );
     })
     .map((userReserve) => ({
-      title: getAssetInfo(userReserve.reserve.symbol).formattedName || '',
+      title: prepareAsset(getAssetInfo(userReserve.reserve.symbol)).formattedName || '',
       color: getAssetColor(userReserve.reserve.symbol),
       value: userReserve.underlyingBalance,
       percentage: valueToBigNumber(userReserve.underlyingBalanceMarketReferenceCurrency)

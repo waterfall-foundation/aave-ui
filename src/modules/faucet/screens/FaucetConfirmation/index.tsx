@@ -10,7 +10,7 @@ import routeParamValidationHOC, {
 } from '../../../../components/RouteParamsValidationWrapper';
 import Row from '../../../../components/basic/Row';
 import NoDataPanel from '../../../../components/NoDataPanel';
-import { getAssetInfo } from '../../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset } from '../../../../helpers/config/assets-config';
 
 import messages from './messages';
 
@@ -22,7 +22,7 @@ function FaucetConfirmation({
   const intl = useIntl();
   const { faucetService } = useTxBuilderContext();
 
-  const asset = getAssetInfo(currencySymbol);
+  const asset = prepareAsset(getAssetInfo(currencySymbol));
 
   if (!user) {
     return (

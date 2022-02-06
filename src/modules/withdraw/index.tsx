@@ -12,13 +12,13 @@ import NoDataPanel from '../../components/NoDataPanel';
 import WithdrawAmount from './screens/WithdrawAmount';
 import WithdrawConfirmation from './screens/WithdrawConfirmation';
 import { CURRENCY_ROUTE_PARAMS } from '../../helpers/router-types';
-import { getAssetInfo } from '../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset } from '../../helpers/config/assets-config';
 
 import messages from './messages';
 
 function Withdraw({ currencySymbol, userReserve, user }: ValidationWrapperComponentProps) {
   const intl = useIntl();
-  const asset = getAssetInfo(currencySymbol);
+  const asset = prepareAsset(getAssetInfo(currencySymbol));
 
   if (!user) {
     return (

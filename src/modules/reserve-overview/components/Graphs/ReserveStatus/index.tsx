@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 import { ParentSize } from '@visx/responsive';
 import { useThemeContext } from '@aave/aave-ui-kit';
 
-import { getAssetInfo, TokenIcon } from '../../../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset, TokenIcon } from '../../../../../helpers/config/assets-config';
 import staticStyles from './style';
 import { PieChart } from '../../../../../components/compositionBars/PieChart';
 import messages from './messages';
@@ -25,7 +25,7 @@ export default function ReserveStatusGraph({
   const percentFromValue = (percent: number, value: number) => percent * (value / 100);
 
   const iconSize = xl && !lg ? 79 : lg && !md ? 60 : md && !sm ? 79 : 100;
-  const symbolsLength = getAssetInfo(symbol).symbolsArray?.length || 0;
+  const symbolsLength = prepareAsset(getAssetInfo(symbol)).symbolsArray?.length || 0;
   const formattedIconSize =
     symbolsLength === 3
       ? percentFromValue(70, iconSize)

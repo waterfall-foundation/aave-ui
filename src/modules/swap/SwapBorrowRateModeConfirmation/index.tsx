@@ -15,7 +15,7 @@ import ValuePercent from '../../../components/basic/ValuePercent';
 import routeParamValidationHOC, {
   ValidationWrapperComponentProps,
 } from '../../../components/RouteParamsValidationWrapper';
-import { getAssetInfo, TokenIcon } from '../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset, TokenIcon } from '../../../helpers/config/assets-config';
 
 import messages from './messages';
 
@@ -34,7 +34,7 @@ function SwapBorrowRateModeConfirmation({
   const query = queryString.parse(location.search);
   const currentRateMode = query.borrowRateMode as InterestRate;
 
-  const asset = getAssetInfo(currencySymbol);
+  const asset = prepareAsset(getAssetInfo(currencySymbol));
 
   if (!user) {
     return (

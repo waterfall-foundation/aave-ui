@@ -15,7 +15,7 @@ import HealthFactor from '../../../components/HealthFactor';
 import routeParamValidationHOC, {
   ValidationWrapperComponentProps,
 } from '../../../components/RouteParamsValidationWrapper';
-import { getAssetInfo, TokenIcon } from '../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset, TokenIcon } from '../../../helpers/config/assets-config';
 
 import messages from './messages';
 
@@ -33,7 +33,7 @@ function SwapUsageAsCollateralModeConfirmation({
   const intl = useIntl();
   const query = queryString.parse(location.search);
 
-  const asset = getAssetInfo(currencySymbol);
+  const asset = prepareAsset(getAssetInfo(currencySymbol));
 
   if (!user) {
     return (

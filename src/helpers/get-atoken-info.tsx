@@ -1,6 +1,7 @@
 import { TokenMetadataType } from '@aave/protocol-js';
 import { getAssetInfo } from '@aave/aave-ui-kit';
 import { tEthereumAddress } from '@aave/protocol-js/dist/tx-builder/types';
+import { prepareAsset } from './config/assets-config';
 
 interface ATokenInfoParams {
   address: tEthereumAddress;
@@ -22,7 +23,7 @@ export function getAtokenInfo({
   prefix,
   withFormattedSymbol,
 }: ATokenInfoParams): ATokenInfo {
-  const asset = getAssetInfo(symbol);
+  const asset = prepareAsset(getAssetInfo(symbol));
   const formattedSymbol = prefix
     ? `${prefix}${asset.symbol}`
     : withFormattedSymbol

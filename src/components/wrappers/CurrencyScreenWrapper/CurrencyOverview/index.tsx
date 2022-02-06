@@ -20,7 +20,7 @@ import { ValidationWrapperComponentProps } from '../../../RouteParamsValidationW
 import { InterestRateSeries } from '../../../graphs/types';
 import { GraphLegendDot } from '../../../graphs/GraphLegend';
 import GraphInner from '../GraphInner';
-import { getAssetInfo, TokenIcon } from '../../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset, TokenIcon } from '../../../../helpers/config/assets-config';
 
 import messages from './messages';
 import staticStyles from './style';
@@ -49,7 +49,7 @@ export default function CurrencyOverview({
   const { currentTheme, sm } = useThemeContext();
   const { marketRefPriceInUsd } = useStaticPoolDataContext();
   const { currentLangSlug } = useLanguageContext();
-  const asset = getAssetInfo(currencySymbol);
+  const asset = prepareAsset(getAssetInfo(currencySymbol));
 
   // const { mode, setMode } = useReservesRateHistoryHelper({
   //   poolReserveId: poolReserve.id,
