@@ -13,18 +13,12 @@ import UnlockWalletWrapper from './components/ConnectWalletWrapper';
 import WalletCard from './components/WalletCard';
 import LedgerChecklist from './components/LedgerChecklist';
 import SelectPreferredNetwork from './components/SelectPreferredNetwork';
-import {
-  AUTHEREUM_API_KEY,
-  getFortmaticKeyByChainId,
-  PORTIS_DAPP_ID,
-} from '../../helpers/config/wallet-config';
 import { UnlockWalletExtraText } from '../../ui-config';
 
 import messages from './messages';
 import staticStyles from './style';
 
 import * as icons from './images';
-import { ChainId } from '@aave/contract-helpers';
 
 export interface Wallet {
   title: string;
@@ -72,63 +66,6 @@ export default function ConnectWalletModal({
       icon: isImToken ? icons.imToken : icons.browserWallets,
       disabled: !browserWalletProvider,
       errorMessage: intl.formatMessage(messages.noBrowserBrowserWallet),
-    },
-    {
-      title: 'Portis',
-      providerName: 'portis',
-      icon: icons.portisIcon,
-      notSupported: !PORTIS_DAPP_ID || preferredChainId === ChainId.avalanche,
-    },
-    {
-      title: 'Ledger',
-      providerName: 'ledger',
-      icon: icons.ledgerIcon,
-      notSupported: preferredChainId === ChainId.polygon || preferredChainId === ChainId.avalanche,
-    },
-    {
-      title: 'MEW wallet',
-      providerName: 'mew-wallet',
-      icon: icons.MEWIcon,
-      notSupported: preferredChainId !== ChainId.mainnet,
-    },
-    {
-      title: 'Coinbase',
-      providerName: 'wallet-link',
-      icon: icons.coinbaseIcon,
-      notSupported: preferredChainId === ChainId.avalanche,
-    },
-    {
-      title: 'Authereum',
-      providerName: 'authereum',
-      icon: icons.authereumIcon,
-      notSupported: !AUTHEREUM_API_KEY || preferredChainId !== ChainId.mainnet,
-    },
-    {
-      title: 'Wallet Connect',
-      providerName: 'wallet-connect',
-      icon: icons.walletConnectIcon,
-    },
-    {
-      title: 'Torus',
-      providerName: 'torus',
-      icon: icons.torusIcon,
-      notSupported: preferredChainId === ChainId.avalanche,
-    },
-    {
-      title: 'Fortmatic',
-      providerName: 'fortmatic',
-      icon: icons.formaticIcon,
-      notSupported:
-        !getFortmaticKeyByChainId(preferredChainId) ||
-        preferredChainId === ChainId.polygon ||
-        preferredChainId === ChainId.avalanche,
-    },
-    {
-      title: 'imToken',
-      providerName: 'wallet-connect',
-      icon: icons.imToken,
-      notSupported:
-        isImToken || preferredChainId === ChainId.polygon || preferredChainId === ChainId.avalanche,
     },
   ];
 
