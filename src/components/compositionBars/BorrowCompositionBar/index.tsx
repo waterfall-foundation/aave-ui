@@ -6,7 +6,7 @@ import { useDynamicPoolDataContext } from '../../../libs/pool-data-provider';
 import Row from '../../basic/Row';
 import CompositionBar from '../CompositionBar';
 
-import { getAssetColor, getAssetInfo } from '../../../helpers/config/assets-config';
+import { getAssetColor, getAssetInfo, prepareAsset } from '../../../helpers/config/assets-config';
 
 import messages from './messages';
 import staticStyles from './style';
@@ -30,7 +30,7 @@ export default function BorrowCompositionBar() {
   const borrowComposition = userReservesData
     .filter((reserve) => reserve.totalBorrows !== '0')
     .map((userReserve) => ({
-      title: getAssetInfo(userReserve.reserve.symbol).formattedName || '',
+      title: prepareAsset(getAssetInfo(userReserve.reserve.symbol)).formattedName || '',
       value: userReserve.totalBorrows,
       percentage: new BigNumber(userReserve.totalBorrowsMarketReferenceCurrency)
         .div(maxBorrowAmount)

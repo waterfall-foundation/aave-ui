@@ -3,6 +3,7 @@ import { BaseNetworkConfig } from '../helpers/config/types';
 export const waterfallId = 333777333;
 export const goerliId = 5;
 export const waterfallGasPrice = 20000000000;
+export const baseAsset = 'WAT';
 
 export const networkConfigs: Record<string, BaseNetworkConfig> = {
   [waterfallId]: {

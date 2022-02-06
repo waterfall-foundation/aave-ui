@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { useThemeContext } from '@aave/aave-ui-kit';
 
 import goToTop from '../../../helpers/goToTop';
-import { getAssetInfo, TokenIcon } from '../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset, TokenIcon } from '../../../helpers/config/assets-config';
 
 import staticStyles from './style';
 
@@ -28,7 +28,7 @@ export default function MobileCardWrapper({
 }: MobileCardWrapperProps) {
   const { currentTheme } = useThemeContext();
 
-  const asset = getAssetInfo(symbol);
+  const asset = prepareAsset(getAssetInfo(symbol));
 
   return (
     <div

@@ -17,7 +17,7 @@ import RepayConfirmation from './screens/RepayConfirmation';
 import RepayAmountWithSelect from './screens/RepayAmountWithSelect';
 import RepayWithCollateralConfirmation from './screens/RepayWithCollateralConfirmation';
 import { isFeatureEnabled } from '../../helpers/config/markets-and-network-config';
-import { getAssetInfo } from '../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset } from '../../helpers/config/assets-config';
 
 import messages from './messages';
 
@@ -30,7 +30,7 @@ function Repay({
 }: ValidationWrapperComponentProps) {
   const intl = useIntl();
   const { currentMarketData } = useProtocolDataContext();
-  const asset = getAssetInfo(currencySymbol);
+  const asset = prepareAsset(getAssetInfo(currencySymbol));
 
   return (
     <ScreenWrapper

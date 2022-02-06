@@ -16,7 +16,7 @@ import messages from './messages';
 import routeParamValidationHOC, {
   ValidationWrapperComponentProps,
 } from '../../../../components/RouteParamsValidationWrapper';
-import { getAssetInfo } from '../../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset } from '../../../../helpers/config/assets-config';
 
 enum BorrowStep {
   AmountForm,
@@ -41,7 +41,7 @@ function BorrowAmount({
   const intl = useIntl();
   const { lendingPool } = useTxBuilderContext();
 
-  const asset = getAssetInfo(currencySymbol);
+  const asset = prepareAsset(getAssetInfo(currencySymbol));
 
   const maxUserAmountToBorrow = valueToBigNumber(
     user?.availableBorrowsMarketReferenceCurrency || 0

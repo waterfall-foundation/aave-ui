@@ -6,7 +6,7 @@ import Link from '../basic/Link';
 
 import messages from './messages';
 import staticStyles from './style';
-import { getAssetInfo } from '../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset } from '../../helpers/config/assets-config';
 
 interface FreezedWarningProps {
   symbol: string;
@@ -15,7 +15,7 @@ interface FreezedWarningProps {
 
 export default function FreezedWarning({ symbol, className }: FreezedWarningProps) {
   const intl = useIntl();
-  const asset = getAssetInfo(symbol);
+  const asset = prepareAsset(getAssetInfo(symbol));
 
   return (
     <p className={classNames('FreezedWarning', className)}>

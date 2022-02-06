@@ -24,7 +24,7 @@ import ApproximateBalanceHelpModal from '../HelpModal/ApproximateBalanceHelpModa
 
 import messages from './messages';
 import staticStyles from './style';
-import { getAssetInfo, getAssetColor } from '../../helpers/config/assets-config';
+import { getAssetInfo, getAssetColor, prepareAsset } from '../../helpers/config/assets-config';
 
 export default function DepositBorrowTopPanel() {
   const intl = useIntl();
@@ -64,7 +64,9 @@ export default function DepositBorrowTopPanel() {
     if (userReserve.underlyingBalance !== '0' || userReserve.totalBorrows !== '0') {
       if (userReserve.underlyingBalance !== '0') {
         depositCompositionData.push({
-          label: `${getAssetInfo(userReserve.reserve.symbol).formattedName}  ${intl.formatNumber(
+          label: `${
+            prepareAsset(getAssetInfo(userReserve.reserve.symbol)).formattedName
+          }  ${intl.formatNumber(
             valueToBigNumber(userReserve.underlyingBalanceMarketReferenceCurrency)
               .dividedBy(user?.totalLiquidityMarketReferenceCurrency)
               .multipliedBy(100)
@@ -77,7 +79,9 @@ export default function DepositBorrowTopPanel() {
       }
       if (userReserve.totalBorrows !== '0') {
         borrowCompositionData.push({
-          label: `${getAssetInfo(userReserve.reserve.symbol).formattedName}  ${intl.formatNumber(
+          label: `${
+            prepareAsset(getAssetInfo(userReserve.reserve.symbol)).formattedName
+          }  ${intl.formatNumber(
             valueToBigNumber(userReserve.totalBorrowsMarketReferenceCurrency)
               .dividedBy(maxBorrowAmount)
               .multipliedBy(100)

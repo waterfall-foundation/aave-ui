@@ -20,7 +20,11 @@ import NotHaveEnoughFundsToRepayHelpModal from '../../../../components/HelpModal
 import routeParamValidationHOC, {
   ValidationWrapperComponentProps,
 } from '../../../../components/RouteParamsValidationWrapper';
-import { getAssetInfo, isAssetStable } from '../../../../helpers/config/assets-config';
+import {
+  getAssetInfo,
+  isAssetStable,
+  prepareAsset,
+} from '../../../../helpers/config/assets-config';
 
 import defaultMessages from '../../../../defaultMessages';
 import messages from './messages';
@@ -38,7 +42,7 @@ function RepayConfirmation({
   const { marketRefPriceInUsd, networkConfig } = useStaticPoolDataContext();
   const { lendingPool } = useTxBuilderContext();
   const [isTxExecuted, setIsTxExecuted] = useState(false);
-  const assetDetails = getAssetInfo(poolReserve.symbol);
+  const assetDetails = prepareAsset(getAssetInfo(poolReserve.symbol));
   const query = queryString.parse(location.search);
   const debtType = query.debtType ? (query.debtType as InterestRate) : InterestRate.Variable;
 

@@ -5,7 +5,7 @@ import { BigNumber } from 'bignumber.js';
 
 import Row from '../../basic/Row';
 import CompositionBar from '../CompositionBar';
-import { getAssetInfo, getAssetColor } from '../../../helpers/config/assets-config';
+import { getAssetInfo, getAssetColor, prepareAsset } from '../../../helpers/config/assets-config';
 
 import messages from './messages';
 import staticStyles from './style';
@@ -27,7 +27,7 @@ export default function DepositCompositionBar({ user }: DepositCompositionBarPro
         .multipliedBy(100)
         .precision(20, BigNumber.ROUND_UP)
         .toNumber(),
-      title: getAssetInfo(userReserve.reserve.symbol).formattedName || '',
+      title: prepareAsset(getAssetInfo(userReserve.reserve.symbol)).formattedName || '',
       color: getAssetColor(userReserve.reserve.symbol),
     }));
 

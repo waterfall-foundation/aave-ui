@@ -11,7 +11,7 @@ import messages from './messages';
 import { ValidationWrapperComponentProps } from '../../../../components/RouteParamsValidationWrapper';
 import { GraphPoint, InterestRateSeries } from '../../../../components/graphs/types';
 import { RATES_HISTORY_ENDPOINT } from '../../../../helpers/config/misc-config';
-import { getAssetInfo } from '../../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset } from '../../../../helpers/config/assets-config';
 
 interface BorrowCurrencyWrapperProps
   extends Pick<
@@ -36,7 +36,7 @@ export default function BorrowCurrencyWrapper({
   const { data: borrowRatesHistory } = useReserveRatesHistory(poolReserve.id);
   const [series, setSeries] = useState<InterestRateSeries[]>([]);
 
-  const asset = getAssetInfo(currencySymbol);
+  const asset = prepareAsset(getAssetInfo(currencySymbol));
 
   const stableRateHistoryData = [] as GraphPoint[];
   const variableRateHistoryData = [] as GraphPoint[];

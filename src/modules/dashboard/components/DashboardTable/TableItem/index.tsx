@@ -4,7 +4,7 @@ import { useThemeContext } from '@aave/aave-ui-kit';
 
 import TableCol from '../TableCol';
 import AMPLWarning from '../../../../../components/AMPLWarning';
-import { getAssetInfo, TokenIcon } from '../../../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset, TokenIcon } from '../../../../../helpers/config/assets-config';
 
 import staticStyles from './style';
 
@@ -16,8 +16,9 @@ interface TableItemProps {
 
 export default function TableItem({ tokenSymbol, color, children, ...rest }: TableItemProps) {
   const { currentTheme, lg } = useThemeContext();
-  const asset = getAssetInfo(tokenSymbol);
+  const asset = prepareAsset(getAssetInfo(tokenSymbol));
 
+  const editedAsset = prepareAsset(asset);
   return (
     <div
       className={classNames('TableItem', {
@@ -30,7 +31,7 @@ export default function TableItem({ tokenSymbol, color, children, ...rest }: Tab
       <TableCol className="TableItem__inner" maxWidth={lg ? 250 : 160}>
         <TokenIcon
           tokenSymbol={tokenSymbol}
-          tokenFullName={asset.shortSymbol || asset.formattedName}
+          tokenFullName={editedAsset.shortSymbol || editedAsset.formattedName}
           height={26}
           width={26}
           className="TableItem__token"

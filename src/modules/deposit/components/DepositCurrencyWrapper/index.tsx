@@ -12,7 +12,7 @@ import messages from './messages';
 import { ValidationWrapperComponentProps } from '../../../../components/RouteParamsValidationWrapper';
 import { GraphPoint, InterestRateSeries } from '../../../../components/graphs/types';
 import { useProtocolDataContext } from '../../../../libs/protocol-data-provider';
-import { getAssetInfo } from '../../../../helpers/config/assets-config';
+import { getAssetInfo, prepareAsset } from '../../../../helpers/config/assets-config';
 
 interface DepositCurrencyWrapperProps
   extends Pick<
@@ -35,7 +35,7 @@ export default function DepositCurrencyWrapper({
   const { data: interestRatesHistory } = useReserveRatesHistory(poolReserve.id);
   const { networkConfig } = useProtocolDataContext();
   const [series, setSeries] = useState<InterestRateSeries[]>([]);
-  const asset = getAssetInfo(currencySymbol);
+  const asset = prepareAsset(getAssetInfo(currencySymbol));
 
   let maxAmountToDeposit = valueToBigNumber(walletBalance);
   if (maxAmountToDeposit.gt(0) && poolReserve.symbol.toUpperCase() === networkConfig.baseAsset) {
