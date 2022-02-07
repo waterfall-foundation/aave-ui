@@ -76,9 +76,6 @@ export default function Menu({ title }: MenuProps) {
                 />
               </li>
             ))}
-            <li className="Menu__link-inner">
-              <MoreButton />
-            </li>
           </ul>
         </nav>
 

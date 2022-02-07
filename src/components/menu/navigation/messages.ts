@@ -8,4 +8,6 @@ export default defineMessages({
   swap: 'Swap',
   stake: 'Stake',
   governance: 'Governance',
+  about: 'About',
+  manual: 'Manual',
 });

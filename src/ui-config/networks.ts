@@ -6,12 +6,33 @@ export const waterfallGasPrice = 20000000000;
 export const baseAsset = 'WAT';
 
 export const networkConfigs: Record<string, BaseNetworkConfig> = {
+  // [goerliId]: {
+  //   name: 'Goerli',
+  //   publicJsonRPCUrl: ['https://goerli.infura.io/v3/35bd3a0275804f1bb6ba57ebcd3dfaa4'],
+  //   addresses: {
+  //     walletBalanceProvider: '0x31E9bAB87bf2F4d93E19D0C68B1130Ad5B249669',
+  //     uiPoolDataProvider: '0xa0Fa846a5c51026B5A31CF554543F07eB0b8e433',
+  //     uiIncentiveDataProvider: '0x79ca57C121442efd594Ff61DB5444aD96c8b2105',
+  //   },
+  //   protocolDataUrl: '',
+  //   baseAsset: 'ETH',
+  //   baseAssetWrappedAddress: '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6',
+  //   baseUniswapAdapter: '0x3A8787AaF5f88ca8d2b5D9a08457754156A3f97f',
+  //   // incentives hardcoded information
+  //   rewardTokenSymbol: 'stkAAVE',
+  //   rewardTokenAddress: '0xb6062c830e14eb130f079d2b9f9dbe8c15414f6a',
+  //   rewardTokenDecimals: 18,
+  //   incentivePrecision: 18,
+  //   explorerLink: '',
+  //   rpcOnly: true,
+  //   isTestnet: true,
+  // },
   [waterfallId]: {
     name: 'Waterfall',
     publicJsonRPCUrl: ['https://rpc.waterfall.network/rpc'],
     addresses: {
-      walletBalanceProvider: '0x81428F763e3409a05525307332Cd875B014F73A0',
-      uiPoolDataProvider: '0xE59b9A3369dD671C623554Acc656c760c50ABeE4',
+      walletBalanceProvider: '0x0f39C72E3eb111Ffe6a0A9eA431f7A11B8141322',
+      uiPoolDataProvider: '0xbE25502Bd77932858977dB9aac00dDCbF7E532dD',
       uiIncentiveDataProvider: '0xAeB7991Fbc44F563C82F501E116CAE6fbAf68dF2',
     },
     protocolDataUrl: '',
@@ -45,27 +66,6 @@ export const networkConfigs: Record<string, BaseNetworkConfig> = {
   //   rewardTokenDecimals: 18,
   //   incentivePrecision: 18,
   //   explorerLink: 'https://kovan.etherscan.io',
-  //   rpcOnly: true,
-  //   isTestnet: true,
-  // },
-  // [goerliId]: {
-  //   name: 'Goerli',
-  //   publicJsonRPCUrl: ['https://goerli.infura.io/v3/35bd3a0275804f1bb6ba57ebcd3dfaa4'],
-  //   addresses: {
-  //     walletBalanceProvider: '0x31E9bAB87bf2F4d93E19D0C68B1130Ad5B249669',
-  //     uiPoolDataProvider: '0xa0Fa846a5c51026B5A31CF554543F07eB0b8e433',
-  //     uiIncentiveDataProvider: '0x79ca57C121442efd594Ff61DB5444aD96c8b2105',
-  //   },
-  //   protocolDataUrl: '',
-  //   baseAsset: 'ETH',
-  //   baseAssetWrappedAddress: '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6',
-  //   baseUniswapAdapter: '0x3A8787AaF5f88ca8d2b5D9a08457754156A3f97f',
-  //   // incentives hardcoded information
-  //   rewardTokenSymbol: 'stkAAVE',
-  //   rewardTokenAddress: '0xb6062c830e14eb130f079d2b9f9dbe8c15414f6a',
-  //   rewardTokenDecimals: 18,
-  //   incentivePrecision: 18,
-  //   explorerLink: '',
   //   rpcOnly: true,
   //   isTestnet: true,
   // },

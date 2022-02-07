@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {TokenIconProps, useThemeContext} from '@aave/aave-ui-kit';
+import { TokenIconProps, useThemeContext } from '@aave/aave-ui-kit';
 import staticStyles from './style';
 
 type CustomTokenIconProps = TokenIconProps & { iconSvg: string };
@@ -10,9 +10,8 @@ export default function CustomTokenIcon({
   iconSvg,
   tokenFullName,
 }: CustomTokenIconProps) {
-
   const { isCurrentThemeDark } = useThemeContext();
-  const classes = `TokenIcon__name ${isCurrentThemeDark ? 'darkT': 'lightT'}`;
+  const classes = `TokenIcon__name ${isCurrentThemeDark ? 'darkT' : 'lightT'}`;
   return (
     <>
       <style jsx={true}>{staticStyles}</style>
