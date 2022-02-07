@@ -16,6 +16,7 @@ interface MenuLinkProps {
 
 export default function MenuLink({ to, title, isActive, hidden }: MenuLinkProps) {
   const { currentTheme } = useThemeContext();
+  const external = to.toLowerCase().includes('http') || to.toLowerCase().includes('www');
 
   const activeGradient = gradient(
     230,
@@ -26,34 +27,66 @@ export default function MenuLink({ to, title, isActive, hidden }: MenuLinkProps)
   );
 
   return (
-    <Link
-      to={to}
-      className={classNames('MenuLink ButtonLink', {
-        MenuLink__active: isActive,
-        MenuLink__hidden: hidden,
-      })}
-      onClick={() => goToTop()}
-    >
-      <div className="MenuLink__title">
-        <p>
-          <b>{title}</b> <strong>{title}</strong>
-        </p>{' '}
-        <i />
-      </div>
+    <>
+      {external ? (
+        <a href={to} target={'_blank'}   className={classNames('MenuLink ButtonLink', {
+          MenuLink__active: isActive,
+          MenuLink__hidden: hidden,
+        })}>
+          <div className="MenuLink__title">
+            <p>
+              <b>{title}</b> <strong>{title}</strong>
+            </p>
+            <i />
+          </div>
 
-      <style jsx={true} global={true}>
-        {staticStyles}
-      </style>
-      <style jsx={true} global={true}>{`
-        .MenuLink {
-          color: ${currentTheme.white.hex} !important;
-          .MenuLink__title {
-            i {
-              background: ${activeGradient} !important;
+          <style jsx={true} global={true}>
+            {staticStyles}
+          </style>
+          <style jsx={true} global={true}>{`
+            .MenuLink {
+              color: ${currentTheme.white.hex} !important;
+
+              .MenuLink__title {
+                i {
+                  background: ${activeGradient} !important;
+                }
+              }
             }
-          }
-        }
-      `}</style>
-    </Link>
+          `}</style>
+        </a>
+      ) : (
+        <Link
+          to={to}
+          className={classNames('MenuLink ButtonLink', {
+            MenuLink__active: isActive,
+            MenuLink__hidden: hidden,
+          })}
+          onClick={() => goToTop()}
+        >
+          <div className="MenuLink__title">
+            <p>
+              <b>{title}</b> <strong>{title}</strong>
+            </p>{' '}
+            <i />
+          </div>
+
+          <style jsx={true} global={true}>
+            {staticStyles}
+          </style>
+          <style jsx={true} global={true}>{`
+            .MenuLink {
+              color: ${currentTheme.white.hex} !important;
+
+              .MenuLink__title {
+                i {
+                  background: ${activeGradient} !important;
+                }
+              }
+            }
+          `}</style>
+        </Link>
+      )}
+    </>
   );
 }

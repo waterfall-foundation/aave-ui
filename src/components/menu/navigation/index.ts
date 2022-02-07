@@ -36,24 +36,22 @@ const navigation: Navigation[] = [
     title: messages.swap,
     isVisible: isFeatureEnabled.liquiditySwap,
   },
-  // {
-  //   link: '/staking',
-  //   title: messages.stake,
-  //   isVisible: () => !!stakeConfig,
-  // },
-  // {
-  //   link: '/governance',
-  //   title: messages.governance,
-  //   isVisible: () => !!governanceConfig,
-  // },
+  {
+    link: 'https://waterfall.foundation/',
+    title: messages.about,
+  },
+  {
+    link: 'https://waterfall.foundation/aave',
+    title: messages.manual,
+  },
 ];
 
-export const moreNavigation: Navigation[] = [...moreMenuItems, ...moreMenuExtraItems];
+export const moreNavigation: Navigation[] = [];
 
 export const mobileNavigation: Navigation[] = [
   ...navigation,
-  ...moreMenuItems,
-  ...moreMenuMobileOnlyItems,
+  // ...moreMenuItems,
+  // ...moreMenuMobileOnlyItems,
 ];
 
 export default navigation;

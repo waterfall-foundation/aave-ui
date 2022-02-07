@@ -11,6 +11,7 @@ import { useHeaderTitle, useWithDesktopTitle } from '../ScreensWrapper';
 
 import staticStyles from './style';
 import Snowfall from 'react-snowfall';
+import { FooterLabel } from '../../basic/FooterLabel';
 
 // Pages where the banners should be displayed
 export const DISPLAY_BRIDGE_BANNER_PAGES = ['/deposit', '/repay'];
@@ -119,6 +120,7 @@ export default function ScreenWrapper({
           }
         }
       `}</style>
+      <FooterLabel />
     </section>
   );
 }
