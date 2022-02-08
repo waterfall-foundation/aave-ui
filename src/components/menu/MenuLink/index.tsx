@@ -29,10 +29,14 @@ export default function MenuLink({ to, title, isActive, hidden }: MenuLinkProps)
   return (
     <>
       {external ? (
-        <a href={to} target={'_blank'}   className={classNames('MenuLink ButtonLink', {
-          MenuLink__active: isActive,
-          MenuLink__hidden: hidden,
-        })}>
+        <a
+          href={to}
+          target={'_blank'}
+          className={classNames('MenuLink ButtonLink', {
+            MenuLink__active: isActive,
+            MenuLink__hidden: hidden,
+          })}
+        >
           <div className="MenuLink__title">
             <p>
               <b>{title}</b> <strong>{title}</strong>

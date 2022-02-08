@@ -17,6 +17,7 @@ import ErrorPage from '../ErrorPage';
 import messages from './messages';
 import { useWalletBalanceProviderContext } from '../../libs/wallet-balance-provider/WalletBalanceProvider';
 import { ComputedUserReserve } from '@aave/math-utils';
+import { formatUsd } from '../../helpers/convert';
 
 export interface ValidationWrapperComponentProps
   extends Pick<RouteComponentProps, 'history' | 'location'> {
@@ -112,7 +113,7 @@ export default function routeParamValidationHOC({
       }
 
       const walletBalanceUSD = valueToBigNumber(walletBalance)
-        .multipliedBy(poolReserve.priceInMarketReferenceCurrency)
+        .multipliedBy(formatUsd(poolReserve.priceInMarketReferenceCurrency))
         .multipliedBy(marketRefPriceInUsd);
 
       const props = {

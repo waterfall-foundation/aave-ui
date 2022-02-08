@@ -24,6 +24,7 @@ import { BorrowTableItem } from '../../components/BorrowAssetTable/types';
 import { isAssetStable } from '../../../../helpers/config/assets-config';
 import { useIncentivesDataContext } from '../../../../libs/pool-data-provider/hooks/use-incentives-data-context';
 import PermissionWarning from '../../../../ui-config/branding/PermissionWarning';
+import { formatUsd } from '../../../../helpers/convert';
 
 export default function BorrowMain() {
   const intl = useIntl();
@@ -57,7 +58,7 @@ export default function BorrowMain() {
           ? BigNumber.min(
               // one percent margin to don't fail tx
               availableBorrowsMarketReferenceCurrency
-                .div(reserve.priceInMarketReferenceCurrency)
+                .div(formatUsd(reserve.priceInMarketReferenceCurrency))
                 .multipliedBy(
                   user && user.totalBorrowsMarketReferenceCurrency !== '0' ? '0.99' : '1'
                 ),
@@ -65,7 +66,7 @@ export default function BorrowMain() {
             ).toNumber()
           : 0;
         const availableBorrowsInUSD = valueToBigNumber(availableBorrows)
-          .multipliedBy(reserve.priceInMarketReferenceCurrency)
+          .multipliedBy(formatUsd(reserve.priceInMarketReferenceCurrency))
           .multipliedBy(marketRefPriceInUsd)
           .toString();
         const reserveIncentiveData = reserveIncentives[reserve.underlyingAsset.toLowerCase()];

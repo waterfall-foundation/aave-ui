@@ -23,6 +23,7 @@ import staticStyles from './style';
 import linkIcon from '../../../../images/blueLinkIcon.svg';
 import { getLPTokenPoolLink } from '../../../../helpers/lp-tokens';
 import { ComputedReserveData } from '../../../../libs/pool-data-provider';
+import { formatUsd } from '../../../../helpers/convert';
 
 interface ReserveInformationProps {
   symbol: string;
@@ -38,15 +39,15 @@ export default function ReserveInformation({
   const intl = useIntl();
   const { currentTheme } = useThemeContext();
   const totalLiquidityInUsd = valueToBigNumber(poolReserve.totalLiquidity)
-    .multipliedBy(poolReserve.priceInMarketReferenceCurrency)
+    .multipliedBy(formatUsd(poolReserve.priceInMarketReferenceCurrency))
     .multipliedBy(marketRefPriceInUsd)
     .toString();
   const totalBorrowsInUsd = valueToBigNumber(poolReserve.totalDebt)
-    .multipliedBy(poolReserve.priceInMarketReferenceCurrency)
+    .multipliedBy(formatUsd(poolReserve.priceInMarketReferenceCurrency))
     .multipliedBy(marketRefPriceInUsd)
     .toString();
   const availableLiquidityInUsd = valueToBigNumber(poolReserve.availableLiquidity)
-    .multipliedBy(poolReserve.priceInMarketReferenceCurrency)
+    .multipliedBy(formatUsd(poolReserve.priceInMarketReferenceCurrency))
     .multipliedBy(marketRefPriceInUsd)
     .toString();
 

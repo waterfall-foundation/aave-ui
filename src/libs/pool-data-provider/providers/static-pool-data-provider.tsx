@@ -11,6 +11,7 @@ import { ChainId } from '@aave/contract-helpers';
 import { usePoolData } from '../hooks/use-pool-data';
 import { ReserveDataHumanized, UserReserveDataHumanized } from '@aave/contract-helpers';
 import { normalize } from '@aave/math-utils';
+import { formatUsd } from '../../../helpers/convert';
 
 /**
  * removes the marketPrefix from a symbol
@@ -135,7 +136,12 @@ export function StaticPoolDataProvider({
     if (reserve) {
       const reserveWithBase: UserReserveDataExtended = {
         ...userReserve,
-        reserve,
+        reserve: {
+          ...reserve,
+          priceInMarketReferenceCurrency: String(
+            formatUsd(reserve.priceInMarketReferenceCurrency, 800000000000000000)
+          ), //hardcode usd 0.8
+        },
       };
       userReserves.push(reserveWithBase);
       if (reserve.symbol.toUpperCase() === `W${networkConfig.baseAsset}`) {
@@ -163,10 +169,11 @@ export function StaticPoolDataProvider({
     console.log('switched to RPC');
   }
 
-  const marketRefPriceInUsd = activeData?.reserves?.baseCurrencyData
-    ?.marketReferenceCurrencyPriceInUsd
-    ? activeData.reserves.baseCurrencyData?.marketReferenceCurrencyPriceInUsd
-    : '0';
+  // const marketRefPriceInUsd = activeData?.reserves?.baseCurrencyData
+  //   ?.marketReferenceCurrencyPriceInUsd
+  //   ? activeData.reserves.baseCurrencyData?.marketReferenceCurrencyPriceInUsd || '1.5'
+  //   : '0';
+  const marketRefPriceInUsd = 1500000000;
 
   const marketRefCurrencyDecimals = activeData?.reserves?.baseCurrencyData
     ?.marketReferenceCurrencyDecimals

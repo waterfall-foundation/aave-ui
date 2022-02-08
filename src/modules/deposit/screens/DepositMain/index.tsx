@@ -26,6 +26,7 @@ import { useWalletBalanceProviderContext } from '../../../../libs/wallet-balance
 import { isAssetStable } from '../../../../helpers/config/assets-config';
 import { useIncentivesDataContext } from '../../../../libs/pool-data-provider/hooks/use-incentives-data-context';
 import PermissionWarning from '../../../../ui-config/branding/PermissionWarning';
+import { formatUsd } from '../../../../helpers/convert';
 
 export default function DepositsMain() {
   const intl = useIntl();
@@ -74,7 +75,7 @@ export default function DepositsMain() {
                 valueToBigNumber('10').pow(reserve.decimals)
               );
         const walletBalanceInUSD = walletBalance
-          .multipliedBy(reserve.priceInMarketReferenceCurrency)
+          .multipliedBy(formatUsd(reserve.priceInMarketReferenceCurrency))
           .multipliedBy(marketRefPriceInUsd)
           .toString();
         const reserveIncentiveData = reserveIncentives[reserve.underlyingAsset.toLowerCase()];
