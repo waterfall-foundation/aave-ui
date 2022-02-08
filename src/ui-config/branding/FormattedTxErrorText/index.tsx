@@ -6,6 +6,7 @@ import Link from '../../../components/basic/Link';
 
 import messages from './messages';
 import staticStyles from './style';
+import { baseAsset } from '../../networks';
 
 export default function FormattedTxErrorText() {
   const intl = useIntl();
@@ -15,7 +16,7 @@ export default function FormattedTxErrorText() {
     <div className="FormattedTxErrorText">
       <span>
         {intl.formatMessage(messages.errorDescriptionFirst, {
-          asset: networkConfig.baseAsset,
+          asset: baseAsset || networkConfig.baseAsset,
         })}
       </span>
       <span>
@@ -29,10 +30,10 @@ export default function FormattedTxErrorText() {
               color="secondary"
             />
           ),
-          discord: (
+          discord: ( // TELEGRAM LINK
             <Link
-              to="https://aave.com/discord"
-              title="Discord"
+              to="https://t.me/joinchat/QFPa-8dCJ3ZiMjAy"
+              title="Telegram"
               absolute={true}
               inNewWindow={true}
               color="secondary"
