@@ -28,6 +28,7 @@ import {
 
 import defaultMessages from '../../../../defaultMessages';
 import messages from './messages';
+import { formatUsd } from '../../../../helpers/convert';
 
 function RepayConfirmation({
   currencySymbol,
@@ -78,13 +79,13 @@ function RepayConfirmation({
 
   const displayAmountToRepay = BigNumber.min(amountToRepayUI, maxAmountToRepay);
   const displayAmountToRepayInUsd = displayAmountToRepay
-    .multipliedBy(poolReserve.priceInMarketReferenceCurrency)
+    .multipliedBy(formatUsd(poolReserve.priceInMarketReferenceCurrency))
     .multipliedBy(marketRefPriceInUsd);
 
   const amountAfterRepay = maxAmountToRepay.minus(amountToRepayUI).toString();
   const displayAmountAfterRepay = BigNumber.min(amountAfterRepay, maxAmountToRepay);
   const displayAmountAfterRepayInUsd = displayAmountAfterRepay
-    .multipliedBy(poolReserve.priceInMarketReferenceCurrency)
+    .multipliedBy(formatUsd(poolReserve.priceInMarketReferenceCurrency))
     .multipliedBy(marketRefPriceInUsd);
 
   const healthFactorAfterRepay = calculateHealthFactorFromBalancesBigUnits(

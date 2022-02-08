@@ -20,6 +20,7 @@ import MarketMobileCard from '../../components/MarketMobileCard';
 import messages from './messages';
 import staticStyles from './style';
 import { useIncentivesDataContext } from '../../../../libs/pool-data-provider/hooks/use-incentives-data-context';
+import { formatUsd } from '../../../../helpers/convert';
 
 export default function Markets() {
   const intl = useIntl();
@@ -38,19 +39,19 @@ export default function Markets() {
     .map((reserve) => {
       totalLockedInUsd = totalLockedInUsd.plus(
         valueToBigNumber(reserve.totalLiquidity)
-          .multipliedBy(reserve.priceInMarketReferenceCurrency)
+          .multipliedBy(formatUsd(reserve.priceInMarketReferenceCurrency))
           .multipliedBy(marketRefPriceInUsd)
       );
 
       const totalLiquidity = Number(reserve.totalLiquidity);
       const totalLiquidityInUSD = valueToBigNumber(reserve.totalLiquidity)
-        .multipliedBy(reserve.priceInMarketReferenceCurrency)
+        .multipliedBy(formatUsd(reserve.priceInMarketReferenceCurrency))
         .multipliedBy(marketRefPriceInUsd)
         .toNumber();
 
       const totalBorrows = Number(reserve.totalDebt);
       const totalBorrowsInUSD = valueToBigNumber(reserve.totalDebt)
-        .multipliedBy(reserve.priceInMarketReferenceCurrency)
+        .multipliedBy(formatUsd(reserve.priceInMarketReferenceCurrency))
         .multipliedBy(marketRefPriceInUsd)
         .toNumber();
       const reserveIncentiveData = reserveIncentives[reserve.underlyingAsset.toLowerCase()];

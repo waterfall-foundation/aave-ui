@@ -79,7 +79,7 @@ export default function Value({
       })}
     >
       <div className="Value__line">
-        {tokenIcon && symbol && (
+        {!tokenIcon && symbol && (
           <TokenIcon
             className="Value__token-icon"
             tokenSymbol={symbol}

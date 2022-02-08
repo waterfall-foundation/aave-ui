@@ -27,6 +27,7 @@ import messages from './messages';
 import routeParamValidationHOC, {
   ValidationWrapperComponentProps,
 } from '../../../../components/RouteParamsValidationWrapper';
+import { formatUsd } from '../../../../helpers/convert';
 
 function BorrowConfirmation({
   currencySymbol,
@@ -86,7 +87,7 @@ function BorrowConfirmation({
 
   let userAvailableAmountToBorrow = valueToBigNumber(
     user.availableBorrowsMarketReferenceCurrency
-  ).div(poolReserve.priceInMarketReferenceCurrency);
+  ).div(formatUsd(poolReserve.priceInMarketReferenceCurrency));
 
   if (
     userAvailableAmountToBorrow.gt(0) &&
@@ -114,7 +115,7 @@ function BorrowConfirmation({
   }
 
   const amountToBorrowInUsd = amount
-    .multipliedBy(poolReserve.priceInMarketReferenceCurrency)
+    .multipliedBy(formatUsd(poolReserve.priceInMarketReferenceCurrency))
     .multipliedBy(marketRefPriceInUsd);
 
   const newHealthFactor = calculateHealthFactorFromBalancesBigUnits(

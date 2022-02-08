@@ -17,6 +17,7 @@ import routeParamValidationHOC, {
   ValidationWrapperComponentProps,
 } from '../../../../components/RouteParamsValidationWrapper';
 import { getAssetInfo, prepareAsset } from '../../../../helpers/config/assets-config';
+import { formatUsd } from '../../../../helpers/convert';
 
 enum BorrowStep {
   AmountForm,
@@ -45,7 +46,7 @@ function BorrowAmount({
 
   const maxUserAmountToBorrow = valueToBigNumber(
     user?.availableBorrowsMarketReferenceCurrency || 0
-  ).div(poolReserve.priceInMarketReferenceCurrency);
+  ).div(formatUsd(poolReserve.priceInMarketReferenceCurrency));
   let maxAmountToBorrow = BigNumber.max(
     BigNumber.min(poolReserve.availableLiquidity, maxUserAmountToBorrow),
     0

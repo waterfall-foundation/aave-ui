@@ -24,6 +24,7 @@ import { isAssetStable } from '../../../../helpers/config/assets-config';
 import defaultMessages from '../../../../defaultMessages';
 import messages from './messages';
 import { ChainId } from '@aave/contract-helpers';
+import { formatUsd } from '../../../../helpers/convert';
 
 interface QueryParams {
   fromAsset?: string;
@@ -114,13 +115,13 @@ function RepayWithCollateralConfirmation({
 
   const displayAmountToRepay = BigNumber.min(debtToRepay, maxDebtToRepay);
   const displayAmountToRepayInUsd = displayAmountToRepay
-    .multipliedBy(poolReserve.priceInMarketReferenceCurrency)
+    .multipliedBy(formatUsd(poolReserve.priceInMarketReferenceCurrency))
     .multipliedBy(marketRefPriceInUsd);
 
   const amountAfterRepay = maxDebtToRepay.minus(debtToRepay).toString();
   const displayAmountAfterRepay = BigNumber.min(amountAfterRepay, maxDebtToRepay);
   const displayAmountAfterRepayInUsd = displayAmountAfterRepay
-    .multipliedBy(poolReserve.priceInMarketReferenceCurrency)
+    .multipliedBy(formatUsd(poolReserve.priceInMarketReferenceCurrency))
     .multipliedBy(marketRefPriceInUsd);
 
   const { hfAfterSwap, hfInitialEffectOfFromAmount } = calculateHFAfterRepay(

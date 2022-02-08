@@ -30,14 +30,14 @@ export const watSvg = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjRweCIgaGVpZ2h
 export const TokenIcon = (props: Omit<TokenIconProps, 'getAssetInfo'>) => {
   let icon = 'https://explorer.waterfall.network/favicon-72-precomposed.png';
   if (props.tokenSymbol.toLowerCase() === 'eth') icon = watSvg;
-    return (
-      <CustomTokenIcon
-        {...props}
-        tokenSymbol={props.tokenFullName || props.tokenSymbol}
-        getAssetInfo={getAssetInfo}
-        iconSvg={icon}
-      />
-    );
+  return (
+    <CustomTokenIcon
+      {...props}
+      tokenSymbol={props.tokenFullName || props.tokenSymbol}
+      getAssetInfo={getAssetInfo}
+      iconSvg={icon}
+    />
+  );
 
   // return <DefaultTokenIcon {...props} getAssetInfo={getAssetInfo} />;
 };

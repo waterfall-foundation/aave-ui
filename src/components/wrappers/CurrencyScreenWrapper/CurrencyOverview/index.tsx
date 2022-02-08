@@ -24,6 +24,7 @@ import { getAssetInfo, prepareAsset, TokenIcon } from '../../../../helpers/confi
 
 import messages from './messages';
 import staticStyles from './style';
+import { formatUsd } from '../../../../helpers/convert';
 
 interface CurrencyOverviewProps
   extends Pick<ValidationWrapperComponentProps, 'poolReserve' | 'currencySymbol'> {
@@ -58,7 +59,7 @@ export default function CurrencyOverview({
   const overviewData = {
     utilizationRate: Number(poolReserve.utilizationRate),
     availableLiquidity: poolReserve.availableLiquidity,
-    priceInUsd: valueToBigNumber(poolReserve.priceInMarketReferenceCurrency)
+    priceInUsd: valueToBigNumber(formatUsd(poolReserve.priceInMarketReferenceCurrency))
       .multipliedBy(marketRefPriceInUsd)
       .toNumber(),
     depositApy: Number(poolReserve.supplyAPY),

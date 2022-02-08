@@ -23,6 +23,7 @@ import messages from './messages';
 import staticStyles from './style';
 import { ComputedReserveData, UserSummary } from '../../../../libs/pool-data-provider';
 import { ComputedUserReserve } from '@aave/math-utils';
+import { formatUsd } from '../../../../helpers/convert';
 
 interface UserInformationProps {
   user?: UserSummary;
@@ -61,7 +62,7 @@ export default function UserInformation({
   const availableBorrows = availableBorrowsMarketReferenceCurrency.gt(0)
     ? BigNumber.min(
         availableBorrowsMarketReferenceCurrency
-          .div(poolReserve.priceInMarketReferenceCurrency)
+          .div(formatUsd(poolReserve.priceInMarketReferenceCurrency))
           .multipliedBy(user && user.totalBorrowsMarketReferenceCurrency !== '0' ? '0.99' : '1'),
         poolReserve.availableLiquidity
       ).toNumber()
