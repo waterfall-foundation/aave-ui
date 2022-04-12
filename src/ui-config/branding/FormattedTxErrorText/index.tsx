@@ -23,14 +23,15 @@ export default function FormattedTxErrorText() {
         {intl.formatMessage(messages.errorDescriptionSecond, {
           email: (
             <Link
-              to="https://aave.com/discord"
-              title="Discord"
+              to="https://t.me/joinchat/QFPa-8dCJ3ZiMjAy"
+              title="Telegram"
               absolute={true}
               inNewWindow={true}
               color="secondary"
             />
           ),
-          discord: ( // TELEGRAM LINK
+          // TELEGRAM LINK
+          discord: (
             <Link
               to="https://t.me/joinchat/QFPa-8dCJ3ZiMjAy"
               title="Telegram"

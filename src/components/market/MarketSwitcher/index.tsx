@@ -83,14 +83,14 @@ export default function MarketSwitcher({ toTop, className, textButton }: MarketS
                     MarketSwitcher__buttonLogoInnerWithSubLogo: !!currentMarketData.subLogo,
                   })}
                 >
-                  <img
-                    src={
-                      !!currentMarketData.activeLogo
-                        ? currentMarketData.activeLogo
-                        : currentMarketData.logo
-                    }
-                    alt=""
-                  />
+                  {/*<img*/}
+                  {/*  src={*/}
+                  {/*    !!currentMarketData.activeLogo*/}
+                  {/*      ? currentMarketData.activeLogo*/}
+                  {/*      : currentMarketData.logo*/}
+                  {/*  }*/}
+                  {/*  alt=""*/}
+                  {/*/>*/}
                 </div>
 
                 <p>{intl.formatMessage(messages.market)}</p>
@@ -135,7 +135,7 @@ export default function MarketSwitcher({ toTop, className, textButton }: MarketS
               <div className="MarketSwitcher__market-content">
                 <div className="MarketSwitcher__market-inner">
                   <div className="MarketSwitcher__logo-inner">
-                    <img src={marketData.logo} alt={market} />
+                    {/*<img src={marketData.logo} alt={market} />*/}
                   </div>
 
                   <GradientText

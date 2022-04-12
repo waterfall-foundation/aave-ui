@@ -69,7 +69,7 @@ export default function MarketSelectButton({
       <div className="MarketSelectButton__inner">
         <div className="MarketSelectButton__innerLeft">
           <div className="MarketSelectButton__logo-inner">
-            <img src={logo} alt="" />
+            {/*<img src={logo} alt="" />*/}
             {!!logoText && !subLogo && <span>{logoText}</span>}
           </div>
 

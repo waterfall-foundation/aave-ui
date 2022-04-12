@@ -10,7 +10,6 @@ import goToTop from '../../../helpers/goToTop';
 import Link from '../../basic/Link';
 import MarketSwitcher from '../../market/MarketSwitcher';
 import MenuLink from '../MenuLink';
-import MoreButton from '../MoreButton';
 import AddressInfo from '../AddressInfo';
 import MobileContent from '../MobileContent';
 import { LOGO } from '../../../ui-config';

@@ -34,8 +34,9 @@ const staticStyles = css.global`
 
     &__logo-inner {
       img {
-        width: 72px;
+        width: auto;
         height: 20px;
+        max-width: 30px;
       }
       @include respond-to(sm) {
         display: none;
