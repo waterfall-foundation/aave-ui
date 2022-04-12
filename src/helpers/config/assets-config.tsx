@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Asset,
-  getAssetInfoFactory,
-  TokenIcon as DefaultTokenIcon,
-  TokenIconProps,
-} from '@aave/aave-ui-kit';
+import { Asset, getAssetInfoFactory, TokenIconProps } from '@aave/aave-ui-kit';
 
 import { assetsList, stableAssets } from '../../ui-config/assets';
 import CustomTokenIcon from '../../components/basic/CustomTokenIcon';

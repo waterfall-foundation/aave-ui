@@ -10,7 +10,6 @@ import goToTop from '../../../helpers/goToTop';
 import Link from '../../basic/Link';
 import MarketSwitcher from '../../market/MarketSwitcher';
 import MenuLink from '../MenuLink';
-import MoreButton from '../MoreButton';
 import AddressInfo from '../AddressInfo';
 import MobileContent from '../MobileContent';
 import { LOGO } from '../../../ui-config';
@@ -43,7 +42,7 @@ export default function Menu({ title }: MenuProps) {
     <header className="Menu">
       <div className="Menu__logo-inner">
         <Link className="Menu__logo-link" to="/markets" onClick={() => goToTop()}>
-          <img src={LOGO} alt="Aave" />
+          <img src={LOGO} alt="Waterfall" />
         </Link>
       </div>
 

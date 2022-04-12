@@ -1,5 +1,4 @@
 import { MessageDescriptor } from 'react-intl';
-import { moreMenuExtraItems, moreMenuItems, moreMenuMobileOnlyItems } from '../../../ui-config';
 import { MarketDataType } from '../../../helpers/config/types';
 import { isFeatureEnabled } from '../../../helpers/config/markets-and-network-config';
 

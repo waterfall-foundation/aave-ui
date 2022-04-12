@@ -16,7 +16,7 @@ export default function CustomTokenIcon({
     <>
       <style jsx={true}>{staticStyles}</style>
       <div className="TokenIcon TableItem__token TokenIconWithFullName">
-        <img className="TokenIcon__image" src={iconSvg} height="26" width="26" />
+        <img className="TokenIcon__image" src={iconSvg} height="26" width="26" alt={'token'} />
         <p className={classes}>
           <b>{tokenFullName && tokenSymbol}</b>
         </p>
